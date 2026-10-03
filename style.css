@@ -201,7 +201,6 @@ h2 {
 }
 
 .map-wrapper {
-  position: relative;
   width: 100%;
   max-width: 760px;
   height: 42vh;
@@ -217,43 +216,16 @@ h2 {
   height: 100%;
   border: 0;
   pointer-events: none;
-
-.map-wrapper.active iframe {
-  pointer-events: auto;
 }
 
-.map-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #f7f7f7;
-  border: 0;
-  cursor: pointer;
-  font: inherit;
-  color: #222222;
-  transition: background 0.3s ease;
+.map-fallback {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #888888;
 }
 
-.map-overlay:hover {
-  background: #f0f0f0;
-}
-
-.map-overlay .map-pin {
-  font-size: 2rem;
-}
-
-.map-overlay small {
-  color: #999999;
-  font-size: 0.75rem;
-  line-height: 1.4;
-}
-
-.map-wrapper.active .map-overlay {
-  display: none;
+.map-fallback:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 700px) {
@@ -270,5 +242,4 @@ h2 {
   h2 {
     margin-bottom: 16px;
   }
-}
 }
