@@ -55,15 +55,3 @@ container.addEventListener('wheel', (e) => {
     scrollToPanel(getCurrentIndex() + direction);
   }
 }, { passive: false });
-
-const mapWrapper = document.querySelector('.map-wrapper');
-
-if (mapWrapper) {
-  mapWrapper.querySelector('.map-overlay').addEventListener('click', () => {
-    const iframe = mapWrapper.querySelector('iframe');
-    if (!iframe.src) {
-      iframe.src = iframe.dataset.src;
-    }
-    mapWrapper.classList.add('active');
-  });
-}
