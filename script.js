@@ -1,23 +1,31 @@
 const container = document.querySelector('.snap-container');
 const panels = Array.from(document.querySelectorAll('.panel'));
 
-let isAnimating = false; // zamezí přeskakování více sekcí najednou
+let isAnimating = false;
+let accumulatedDelta = 0;
+let idleTimer = null;
+
+const THRESHOLD = 1;
 
 function getCurrentIndex() {
   return Math.round(container.scrollTop / window.innerHeight);
 }
 
 function scrollToPanel(index) {
-  // omezit na rozsah sekcí
   index = Math.max(0, Math.min(panels.length - 1, index));
+
+  if (index === getCurrentIndex()) {
+    accumulatedDelta = 0;
+    return;
+  }
 
   isAnimating = true;
   panels[index].scrollIntoView({ behavior: 'smooth' });
 
-  // po dokončení animace (~1 s) povolit další scroll
   setTimeout(() => {
     isAnimating = false;
-  }, 1000);
+    accumulatedDelta = 0;
+  }, 200);
 }
 
 container.addEventListener('wheel', (e) => {
@@ -25,9 +33,37 @@ container.addEventListener('wheel', (e) => {
 
   if (isAnimating) return;
 
-  if (e.deltaY > 0) {
-    scrollToPanel(getCurrentIndex() + 1); // dolů
-  } else {
-    scrollToPanel(getCurrentIndex() - 1); // nahoru
+  let delta = e.deltaY;
+  if (e.deltaMode === 1) delta *= 32;
+  if (e.deltaMode === 2) delta *= window.innerHeight;
+
+  if (Math.sign(delta) !== Math.sign(accumulatedDelta)) {
+    accumulatedDelta = 0;
+  }
+
+  accumulatedDelta += delta;
+
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => {
+    accumulatedDelta = 0;
+  }, 0);
+
+  if (Math.abs(accumulatedDelta) >= THRESHOLD) {
+    const direction = accumulatedDelta > 0 ? 1 : -1;
+    accumulatedDelta = 0;
+    clearTimeout(idleTimer);
+    scrollToPanel(getCurrentIndex() + direction);
   }
 }, { passive: false });
+
+const mapWrapper = document.querySelector('.map-wrapper');
+
+if (mapWrapper) {
+  mapWrapper.querySelector('.map-overlay').addEventListener('click', () => {
+    const iframe = mapWrapper.querySelector('iframe');
+    if (!iframe.src) {
+      iframe.src = iframe.dataset.src;
+    }
+    mapWrapper.classList.add('active');
+  });
+}
