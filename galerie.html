@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie – Kavárna Na Rohu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="topbar">
+    <a class="logo" href="index.html">Kavárna Na Rohu</a>
+    <div class="menu">
+      <a href="index.html#onas">O nás</a>
+      <a href="index.html#cenik">Ceník</a>
+      <a href="index.html#kontakt">Kontakt</a>
+      <a href="galerie.html">Galerie</a>
+    </div>
+  </nav>
+
+  <main class="gallery-page">
+    <h2>Galerie</h2>
+    <p class="gallery-subtitle">Nahlédněte k nám do kavárny.</p>
+
+    <div class="gallery-grid">
+      <a class="gallery-item" href="gallery/kavarna.jpeg">
+        <img src="gallery/kavarna.jpeg" alt="Interiér Kavárny Na Rohu">
+        <span class="gallery-caption">Interiér kavárny</span>
+      </a>
+    </div>
+  </main>
+
+  <div class="lightbox" hidden>
+    <button class="lightbox-close" type="button" aria-label="Zavřít">&times;</button>
+    <img src="" alt="">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
