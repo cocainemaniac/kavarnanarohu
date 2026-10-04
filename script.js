@@ -1,5 +1,9 @@
 const container = document.querySelector('.snap-container');
 
+function isMobile() {
+  return window.innerWidth <= 700;
+}
+
 if (container) {
   const panels = Array.from(document.querySelectorAll('.panel'));
 
@@ -31,6 +35,8 @@ if (container) {
   }
 
   container.addEventListener('wheel', (e) => {
+    if (isMobile()) return;
+
     e.preventDefault();
 
     if (isAnimating) return;
@@ -111,7 +117,6 @@ if (lightbox) {
 
   function openLightbox(index) {
     showImage(index);
-    lightbox.classList.toggle('single', items.length <= 1);
     lightbox.hidden = false;
   }
 
