@@ -36,6 +36,7 @@ if (container) {
 
   container.addEventListener('wheel', (e) => {
     if (isMobile()) return;
+    if (e.ctrlKey || e.metaKey) return;
 
     e.preventDefault();
 
@@ -194,16 +195,29 @@ if (lightbox) {
   });
 }
 
-const mapWrapper = document.querySelector('.map-wrapper');
+const mapEl = document.getElementById('map');
 
-if (mapWrapper) {
-  const mapOverlay = mapWrapper.querySelector('.map-overlay');
+if (mapEl && typeof L !== 'undefined') {
+  const POZICE = [50.076162, 14.445568];
 
-  mapOverlay.addEventListener('click', () => {
-    mapWrapper.classList.add('active');
+  const map = L.map('map', {
+    center: POZICE,
+    zoom: 17,
+    scrollWheelZoom: false,
+    gestureHandling: true,
+    gestureHandlingOptions: {
+      text: {
+        touch: 'K posunutí mapy použijte dva prsty',
+        scroll: 'Mapu přiblížíte klávesou Ctrl a kolečkem myši',
+        scrollMac: 'Mapu přiblížíte klávesou ⌘ a kolečkem myši'
+      }
+    }
   });
-  
-  mapWrapper.addEventListener('mouseleave', () => {
-    mapWrapper.classList.remove('active');
-  });
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+  }).addTo(map);
+
+  L.marker(POZICE).addTo(map).bindPopup('Kavárna Na Rohu');
 }
