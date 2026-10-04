@@ -212,39 +212,19 @@ h2 {
   background: #f7f7f7;
 }
 
-.map-wrapper iframe {
+#map {
   width: 100%;
   height: 100%;
-  border: 0;
-  pointer-events: none;
 }
 
-.map-wrapper.active iframe {
-  pointer-events: auto;
+.map-fallback {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #888888;
 }
 
-.map-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.35);
-  color: #ffffff;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-.map-overlay span {
-  padding: 10px 18px;
-  background: rgba(0, 0, 0, 0.55);
-  border-radius: 20px;
-}
-
-.map-wrapper.active .map-overlay {
-  opacity: 0;
-  pointer-events: none;
+.map-fallback:hover {
+  text-decoration: underline;
 }
 
 .gallery-page {
@@ -411,7 +391,7 @@ h2 {
 
 @media (max-width: 700px) {
   body {
-    overflow: auto;/
+    overflow: auto;
   }
   .topbar {
     padding: 14px 16px;
