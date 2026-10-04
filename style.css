@@ -391,6 +391,9 @@ h2 {
 }
 
 @media (max-width: 700px) {
+  body {
+    overflow: auto;/
+  }
   .topbar {
     padding: 14px 16px;
   }
@@ -399,6 +402,22 @@ h2 {
     padding: 6px 10px;
     font-size: 13px;
   }
+  .snap-container {
+    height: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+  .panel {
+    height: auto;
+    min-height: 100vh;
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
+  .gallery-page {
+    height: auto;
+    overflow: visible;
+    padding-top: 100px;
+  }
   .price-list {
     gap: 32px;
   }
@@ -406,7 +425,7 @@ h2 {
     gap: 20px;
   }
   .map-wrapper {
-    height: 30vh;
+    height: 300px;
     margin-top: 24px;
   }
   h2 {
