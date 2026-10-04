@@ -193,3 +193,17 @@ if (lightbox) {
     if (e.key === 'ArrowRight') showImage(currentIndex + 1);
   });
 }
+
+const mapWrapper = document.querySelector('.map-wrapper');
+
+if (mapWrapper) {
+  const mapOverlay = mapWrapper.querySelector('.map-overlay');
+
+  mapOverlay.addEventListener('click', () => {
+    mapWrapper.classList.add('active');
+  });
+  
+  mapWrapper.addEventListener('mouseleave', () => {
+    mapWrapper.classList.remove('active');
+  });
+}
