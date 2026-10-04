@@ -201,6 +201,7 @@ h2 {
 }
 
 .map-wrapper {
+  position: relative;
   width: 100%;
   max-width: 760px;
   height: 42vh;
@@ -218,14 +219,32 @@ h2 {
   pointer-events: none;
 }
 
-.map-fallback {
-  margin-top: 12px;
-  font-size: 0.85rem;
-  color: #888888;
+.map-wrapper.active iframe {
+  pointer-events: auto;
 }
 
-.map-fallback:hover {
-  text-decoration: underline;
+.map-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.map-overlay span {
+  padding: 10px 18px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 20px;
+}
+
+.map-wrapper.active .map-overlay {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .gallery-page {
