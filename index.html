@@ -163,21 +163,17 @@
         </div>
       </div>
 
+
+      
       <div class="map-wrapper">
-        <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox=14.445068%2C50.075662%2C14.446068%2C50.076662&layer=mapnik&marker=50.076162%2C14.445568"
-          title="Mapa – Kavárna Na Rohu"
-          loading="lazy"></iframe>
-         <div class="map-overlay">
-          <span>Kliknutím aktivujete mapu</span>
-        </div>
+        <div id="map"></div>
       </div>
-      <a class="map-fallback"
-         href="https://www.openstreetmap.org/?mlat=50.076162&mlon=14.445568#map=17/50.076162/14.445568"
-         target="_blank" rel="noopener">Otevřít v OpenStreetMap ↗</a>
+      <a class="map-fallback" href="https://www.openstreetmap.org/?mlat=50.076162&mlon=14.445568#map=17/50.076162/14.445568" target="_blank" rel="noopener">Otevřít větší mapu</a>
     </section>
   </div>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
