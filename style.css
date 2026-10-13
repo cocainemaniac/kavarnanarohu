@@ -282,10 +282,6 @@ h2 {
   text-align: center;
 }
 
-.faq-page::-webkit-scrollbar {
-  display: none;
-}
-
 .faq-subtitle {
   color: #888888;
   margin-bottom: 40px;
