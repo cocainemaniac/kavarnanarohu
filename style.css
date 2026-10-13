@@ -280,7 +280,6 @@ h2 {
   overflow-y: auto;
   padding: 120px 24px 60px;
   text-align: center;
-  scrollbar-width: none;
 }
 
 .faq-page::-webkit-scrollbar {
