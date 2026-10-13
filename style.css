@@ -277,7 +277,7 @@ h2 {
 
 .faq-page {
   min-height: 100vh;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding: 120px 24px 60px;
   text-align: center;
 }
